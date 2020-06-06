@@ -1,67 +1,67 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Liva | Personal blog template</title>
-    <link>https://examplesite.com/tags/</link>
-    <description>Recent content in Tags on Liva | Personal blog template</description>
+    <title>Tags on DevOps Blog</title>
+    <link>https://technoroots.github.io/blog/tags/</link>
+    <description>Recent content in Tags on DevOps Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 29 Oct 2019 10:07:47 +0600</lastBuildDate>
     
-	<atom:link href="https://examplesite.com/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://technoroots.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Game</title>
-      <link>https://examplesite.com/tags/game/</link>
+      <link>https://technoroots.github.io/blog/tags/game/</link>
       <pubDate>Tue, 29 Oct 2019 10:07:47 +0600</pubDate>
       
-      <guid>https://examplesite.com/tags/game/</guid>
+      <guid>https://technoroots.github.io/blog/tags/game/</guid>
       <description></description>
     </item>
     
     <item>
       <title>HTML</title>
-      <link>https://examplesite.com/tags/html/</link>
+      <link>https://technoroots.github.io/blog/tags/html/</link>
       <pubDate>Tue, 29 Oct 2019 10:07:47 +0600</pubDate>
       
-      <guid>https://examplesite.com/tags/html/</guid>
+      <guid>https://technoroots.github.io/blog/tags/html/</guid>
       <description></description>
     </item>
     
     <item>
       <title>New</title>
-      <link>https://examplesite.com/tags/new/</link>
+      <link>https://technoroots.github.io/blog/tags/new/</link>
       <pubDate>Tue, 29 Oct 2019 10:07:47 +0600</pubDate>
       
-      <guid>https://examplesite.com/tags/new/</guid>
+      <guid>https://technoroots.github.io/blog/tags/new/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Photos</title>
-      <link>https://examplesite.com/tags/photos/</link>
+      <link>https://technoroots.github.io/blog/tags/photos/</link>
       <pubDate>Tue, 29 Oct 2019 10:07:47 +0600</pubDate>
       
-      <guid>https://examplesite.com/tags/photos/</guid>
+      <guid>https://technoroots.github.io/blog/tags/photos/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Python</title>
-      <link>https://examplesite.com/tags/python/</link>
+      <link>https://technoroots.github.io/blog/tags/python/</link>
       <pubDate>Tue, 29 Oct 2019 10:07:47 +0600</pubDate>
       
-      <guid>https://examplesite.com/tags/python/</guid>
+      <guid>https://technoroots.github.io/blog/tags/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>React</title>
-      <link>https://examplesite.com/tags/react/</link>
+      <link>https://technoroots.github.io/blog/tags/react/</link>
       <pubDate>Tue, 29 Oct 2019 10:07:47 +0600</pubDate>
       
-      <guid>https://examplesite.com/tags/react/</guid>
+      <guid>https://technoroots.github.io/blog/tags/react/</guid>
       <description></description>
     </item>
     
