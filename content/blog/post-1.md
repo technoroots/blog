@@ -1,6 +1,6 @@
 ---
-title: "How To Use Checklists To Improve Your UX"
-date: 2019-10-29T10:07:47+06:00
+title: "Introduction to Cloud Computing"
+date: 2020-06-06
 draft: false
 
 # post thumb
@@ -11,38 +11,49 @@ description: "this is meta description"
 
 # taxonomies
 categories: 
-  - "Android And Gmaing"
+  - "Cloud Computing"
 tags:
-  - "Photos"
-  - "Game"
-  - "React"
-  - "Python"
-  - "New"
+  - "Cloud Computing Basics"
+  - "Virtualization"
+  - "ITInfra"
 
 # post type
 type: "featured"
 ---
 
-# Heading 1
-## Heading 2
-### Heading 3
-#### Heading 4
-##### Heading 5
-###### Heading 6
+# Basic Cloud Concepts
 
-<hr>
+## What is cloud computing ?
+Cloud computing is the on demand availability of computer system resources, especially data storage and computing power, without direct active management by the user. The term is generally used to describe data centres available to many users over the Internet.
 
-##### Emphasis
+## Advantages Of Cloud Computing
 
-Emphasis, aka italics, with *asterisks* or _underscores_.
+*	Cost saving 
+*	Security
+*	Flexibility
+*	¨Mobiliy
+*	Disaster Recovery
+*	Automatic software updates
+*	¨Large number of services available for use.
 
-Strong emphasis, aka bold, with **asterisks** or __underscores__.
+## Networking Concepts For Cloud Computing
 
-Combined emphasis with **asterisks and _underscores_**.
+### Linux Namespaces
 
-Strikethrough uses two tildes. ~~Scratch this.~~
+A namespace is a way of scoping a particular set of identifiers. Using a namespace, you can use the same identifier multiple times in different namespaces. You can also restrict an identifier set visible to particular processes.
+At a high level, Linux namespace allow for isolation of global system resources between independent processes. For example, the PID namespace isolates the process ID numberspace. This means that two processes running on the same host can have the same PID.
 
-<hr>
+### Network Namespaces
+
+In a network namespace, the scoped identifiers are network devices; so a given network device, such as eth0, exists in a particular namespace. Linux starts up with a default network namespace, so if your operating system does not do anything special, that is where all the network devices will be located. However, it is also possibleto create further non-default namespaces, and create new devices in those namespaces, or to move an existing device from one namespace to another.
+
+### Overlay Networks
+
+Overlay network is a network spread over another network. For example, any application that has or provides services and is in a client server architecture is an overlay network over the internet.
+ 
+
+
+
 
 ##### Link
 [I'm an inline-style link](https://www.google.com)

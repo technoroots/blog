@@ -1,4 +1,4 @@
-name = "Liva Hugo"
+name = "Technoroots"
 license = "MIT"
 licenselink = "https://github.com/themefisher/liva-hugo/blob/master/LICENSE"
 description = "Hugo port of the Themefisher’s Liva Template"
@@ -8,5 +8,5 @@ features = ['bootstrap','responsive']
 min_version = "0.58.0"
 
 [author]
-  name = "Themefisher"
+  name = "Technoroots"
   homepage = "https://themefisher.com/"
