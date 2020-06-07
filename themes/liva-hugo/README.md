@@ -19,7 +19,7 @@
 
 ## Demo
 
-[Live Preview](http://demo.themefisher.com/liva-hugo/)
+[Live Preview](http://demo.technoroots.in/liva-hugo/)
 
 ## Installation
 
@@ -43,12 +43,12 @@ If you have questions or need help integrating the product please [contact us](m
 
 ## Licensing
 
-* Copyright 2020 Themefisher (https://themefisher.com/)
+* Copyright 2020 Technoroots (https://technoroots.in/)
 * Licensed under MIT (https://github.com/themefisher/liva-hugo/blob/master/LICENSE)
 
 ## Premium Themes
 
-| [![Mega-Bundle-HUGO](https://gethugothemes.com/wp-content/uploads/edd/2019/09/Mega-Bundle-HUGO.png)](https://themefisher.com/products/hugo-mega-bundle/) | [![galaxy](https://gethugothemes.com/wp-content/uploads/edd/2020/04/galaxy.png)](https://gethugothemes.com/products/galaxy/) | [![logbook](https://gethugothemes.com/wp-content/uploads/edd/2020/03/logbook-hugo.jpg)](https://gethugothemes.com/products/logbook-hugo/) |
+| [![Mega-Bundle-HUGO](https://gethugothemes.com/wp-content/uploads/edd/2019/09/Mega-Bundle-HUGO.png)](https://technoroots.in/products/hugo-mega-bundle/) | [![galaxy](https://gethugothemes.com/wp-content/uploads/edd/2020/04/galaxy.png)](https://gethugothemes.com/products/galaxy/) | [![logbook](https://gethugothemes.com/wp-content/uploads/edd/2020/03/logbook-hugo.jpg)](https://gethugothemes.com/products/logbook-hugo/) |
 |:---:|:---:|:---:|
 | **Hugo Mega Bundle**  | **Galaxy**  | **LogBook**  |
 | [![gojournal](https://gethugothemes.com/wp-content/uploads/edd/2020/04/GoJournal-hugo.png)](https://gethugothemes.com/products/gojournal-hugo/) | [![gofolium](https://gethugothemes.com/wp-content/uploads/2020/03/gofolium.png)](https://gethugothemes.com/products/gofolium-hugo/) | [![biztrox](https://gethugothemes.com/wp-content/uploads/2019/12/Biztrox.png)](https://gethugothemes.com/products/hugo-business-theme/) |
