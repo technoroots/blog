@@ -21,9 +21,9 @@ tags:
 type: "featured"
 ---
 
-# Basic Cloud Concepts
+## Basic Cloud Concepts
 
-## What is cloud computing ?
+### What is cloud computing ?
 Cloud computing is the on demand availability of computer system resources, especially data storage and computing power, without direct active management by the user. The term is generally used to describe data centres available to many users over the Internet.
 
 ## Advantages Of Cloud Computing
@@ -31,10 +31,10 @@ Cloud computing is the on demand availability of computer system resources, espe
 *	Cost saving 
 *	Security
 *	Flexibility
-*	�Mobiliy
+*	Mobiliy
 *	Disaster Recovery
 *	Automatic software updates
-*	�Large number of services available for use.
+*	Large number of services available for use.
 
 ## Networking Concepts For Cloud Computing
 
@@ -51,128 +51,35 @@ In a network namespace, the scoped identifiers are network devices; so a given n
 
 Overlay network is a network spread over another network. For example, any application that has or provides services and is in a client server architecture is an overlay network over the internet.
  
+## Storage Concepts For Cloud Computing 
 
+### Storage Virtualization
 
+In computer science, storage virtualization is the process of presenting a logical view of the physical storage resources to a host computer system,treating all storage media (hard disk, optical disk, tape, etc.) in the enterprise as a single pool of storage.
 
+### Storage Types
 
-##### Link
-[I'm an inline-style link](https://www.google.com)
-
-[I'm an inline-style link with title](https://www.google.com "Google's Homepage")
-
-[I'm a reference-style link][Arbitrary case-insensitive reference text]
-
-[I'm a relative reference to a repository file](../blob/master/LICENSE)
-
-[You can use numbers for reference-style link definitions][1]
-
-Or leave it empty and use the [link text itself].
-
-URLs and URLs in angle brackets will automatically get turned into links. 
-http://www.example.com or <http://www.example.com> and sometimes 
-example.com (but not on Github, for example).
-
-Some text to show that the reference links can follow later.
-
-[arbitrary case-insensitive reference text]: https://www.mozilla.org
-[1]: http://slashdot.org
-[link text itself]: http://www.reddit.com
-
-<hr>
-
-##### Paragraph
-
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam nihil enim maxime corporis cumque totam aliquid nam sint inventore optio modi neque laborum officiis necessitatibus, facilis placeat pariatur! Voluptatem, sed harum pariatur adipisci voluptates voluptatum cumque, porro sint minima similique magni perferendis fuga! Optio vel ipsum excepturi tempore reiciendis id quidem? Vel in, doloribus debitis nesciunt fugit sequi magnam accusantium modi neque quis, vitae velit, pariatur harum autem a! Velit impedit atque maiores animi possimus asperiores natus repellendus excepturi sint architecto eligendi non, omnis nihil. Facilis, doloremque illum. Fugit optio laborum minus debitis natus illo perspiciatis corporis voluptatum rerum laboriosam.
-
-<hr>
-
-##### List
-
-1. List item
-2. List item
-3. List item
-4. List item
-5. List item
-
-##### Unordered List
-
-* List item
-* List item
-* List item
-* List item
-* List item
-
-<hr>
-
-##### Code and Syntax Highlighting
-
-Inline `code` has `back-ticks around` it.
-
-```javascript
-var s = "JavaScript syntax highlighting";
-alert(s);
-```
+*	SAN : Storage area Network ( Fibre optics)
+*	DAS : Direct attached storage ( Physical hard drive)
+*	NAS : Network attached storage ( NFS)
  
-```python
-s = "Python syntax highlighting"
-print s
-```
- 
-```
-No language indicated, so no syntax highlighting. 
-But let's throw in a <b>tag</b>.
-```
 
-<hr>
+## Cloud Computing Deployment Models 
 
-##### Blockquote
+__Public Cloud__: The public cloud is defined as computing services offered by third-party providers over the public Internet, making them available to anyone who wants to use or purchase them. They may be free or sold on-demand, allowing customers to pay only per usage for the CPU cycles, storage, or bandwidth they consume.
 
-> This is a blockquote example.
+__Private Cloud__: A private cloud is a particular model of cloud computing that involves a distinct and secure cloud based environment in which only the specified client can operate.
 
-<hr>
+__Hybrid Cloud__: Is a cloud-computing environment that uses a mix of on-premises,private cloud and third party, public cloud services with orchestration between the two platforms
 
-##### Inline HTML
-
-You can also use raw HTML in your Markdown, and it'll mostly work pretty well.
-
-<dl>
-  <dt>Definition list</dt>
-  <dd>Is something people use sometimes.</dd>
-
-  <dt>Markdown in HTML</dt>
-  <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
-</dl>
+__Community Cloud__: A community cloud in computing is a collaborative effort in which infrastructure is shared between several organizations from a specific community with common concerns (security, compliance, jurisdiction, etc.), whether managed internally or by a third party and hosted internally or externally. This is controlled and used by a group of organizations that have shared interest. The costs are spread over fewer users than a public cloud (but more than a private cloud), so only some of the cost savings potential of cloud computing are realized.
 
 
-<hr>
+## Cloud Computing Service Delivery Model
 
-##### Tables
+__IAAS (Infrastructure as  a service__) : IaaS is the lowest-level cloud service paradigm and arguably the most important. With IaaS, pre-configured hardware resources are provided to users through a virtual interface. Unlike PaaS and SaaS, IaaS doesn’t include applications or even an operating system (implementing all of that is left up to the customer), it simply enables access to the infrastructure needed to power or support that software. IaaS can provide extra storage for corporate data backups, network bandwidth for a company website server, or it can even enable access to high power computing which was previously only accessible to those with supercomputers. Popular IaaS offerings like Amazon EC2.
 
-Colons can be used to align columns.
+__PAAS (Platform as a service)__ :  a cloud service model where the cloud is used to deliver a platform to users from which they can develop, initialize and manage applications. PaaS offerings typically include a base operating system and a suite of applications and development tools. PaaS eliminates the need for organizations to build and maintain the infrastructure traditionally used to develop applications.
 
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+__SAAS (Software as a service )__: Sometimes referred to as ‘on-demand software’, SaaS is a software licensing and delivery model where a fully functional and complete software product is delivered to users over the web on a subscription basis. SaaS offerings are typically accessed by end users through a web browser (making the user’s operating system largely irrelevant) and can be billed based on consumption or, more simply, with a flat monthly charge. Example ServiceNow.
 
-There must be at least 3 dashes separating each header cell.
-The outer pipes (|) are optional, and you don't need to make the 
-raw Markdown line up prettily. You can also use inline Markdown.
-
-Markdown | Less | Pretty
---- | --- | ---
-*Still* | `renders` | **nicely**
-1 | 2 | 3
-
-<hr>
-
-##### Image
-
-![image](../../images/post/post-1.jpg)
-
-<hr>
-
-##### Youtube video
-
-{{< youtube C0DPdy98e4c >}}
