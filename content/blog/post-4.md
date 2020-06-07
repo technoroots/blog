@@ -1,167 +1,313 @@
 ---
-title: "How To Use Checklists To Improve Your UX"
-date: 2019-10-29T10:07:47+06:00
+title: "Getting Started With Ansible(Part-3)"
+date: 2020-06-07
 draft: false
 
 # post thumb
-image: "images/post/post-1.jpg"
+image: "images/featured-post/ansible-1.jpg"
 
 # meta description
 description: "this is meta description"
 
 # taxonomies
 categories: 
-  - "Go Language"
+  - "information Technology"
 tags:
-  - "Photos"
-  - "Game"
-  - "HTML"
-  - "Python"
-  - "New"
+  - "Ansible"
+  - "Infra Orchestration"
+  - "Ansible Roles"
+  - "Ansible Galaxy"
+  - "Jinja Templates"
 
 # post type
-type: "post"
+type: "featured"
 ---
 
-# Heading 1
-## Heading 2
-### Heading 3
-#### Heading 4
-##### Heading 5
-###### Heading 6
+Let us move forward and read about templating in Ansible.
 
-<hr>
+## Create And Use Templates To Create Customised Configuration Files(Jinja Templates)
 
-##### Emphasis
+*	Templates give the ability to provide a skeletal file that can be dynamically completed using variables.
+*	The most common template use case is configuration file management.
+*	Templates are generally used by providing a template file on the ansible control node and then using the template module within your playbook to deploy the file on a target server or group.
+*	Templates are processed using jinja2 template language.
+*	Templates have an extension of .j2
 
-Emphasis, aka italics, with *asterisks* or _underscores_.
+![image](../../images/post/ansible-11.png)
 
-Strong emphasis, aka bold, with **asterisks** or __underscores__.
+### Demo
 
-Combined emphasis with **asterisks and _underscores_**.
+Login to the controller node and go to the directory where we have created the playbooks
 
-Strikethrough uses two tildes. ~~Scratch this.~~
+/root/ansible/playbooks
 
-<hr>
-
-##### Link
-[I'm an inline-style link](https://www.google.com)
-
-[I'm an inline-style link with title](https://www.google.com "Google's Homepage")
-
-[I'm a reference-style link][Arbitrary case-insensitive reference text]
-
-[I'm a relative reference to a repository file](../blob/master/LICENSE)
-
-[You can use numbers for reference-style link definitions][1]
-
-Or leave it empty and use the [link text itself].
-
-URLs and URLs in angle brackets will automatically get turned into links. 
-http://www.example.com or <http://www.example.com> and sometimes 
-example.com (but not on Github, for example).
-
-Some text to show that the reference links can follow later.
-
-[arbitrary case-insensitive reference text]: https://www.mozilla.org
-[1]: http://slashdot.org
-[link text itself]: http://www.reddit.com
-
-<hr>
-
-##### Paragraph
-
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam nihil enim maxime corporis cumque totam aliquid nam sint inventore optio modi neque laborum officiis necessitatibus, facilis placeat pariatur! Voluptatem, sed harum pariatur adipisci voluptates voluptatum cumque, porro sint minima similique magni perferendis fuga! Optio vel ipsum excepturi tempore reiciendis id quidem? Vel in, doloribus debitis nesciunt fugit sequi magnam accusantium modi neque quis, vitae velit, pariatur harum autem a! Velit impedit atque maiores animi possimus asperiores natus repellendus excepturi sint architecto eligendi non, omnis nihil. Facilis, doloremque illum. Fugit optio laborum minus debitis natus illo perspiciatis corporis voluptatum rerum laboriosam.
-
-<hr>
-
-##### List
-
-1. List item
-2. List item
-3. List item
-4. List item
-5. List item
-
-
-##### Unordered List
-
-* List item
-* List item
-* List item
-* List item
-* List item
-<hr>
-
-##### Code and Syntax Highlighting
-
-Inline `code` has `back-ticks around` it.
-
-```javascript
-var s = "JavaScript syntax highlighting";
-alert(s);
 ```
- 
-```python
-s = "Python syntax highlighting"
-print s
-```
- 
-```
-No language indicated, so no syntax highlighting. 
-But let's throw in a <b>tag</b>.
+[root@node1 playbooks]# cat sample.j2
+{{ variable1 }}
+No effects on this line
+{{ variable2 }}
+
+[root@node1 playbooks]# cat templatedemoplaybook.yml
+---
+- hosts: all
+  vars:
+    variable1: 'Hello...!!!'
+    variable2: 'My first playbook using template'
+  tasks:
+    - name: Basic Template Example
+      template:
+        src: sample.j2
+        dest: /root/ansible/playbooks/output.txt
 ```
 
-<hr>
+## Ansible Variables And Facts 
 
-##### Blockquote
+Variable names should be letters, numbers, and underscores. Variables should always start with a letter.
+We have already used ansible variables in the earlier part of the lecture, lets discuss other type of variables called dictionary variables.Ansible have some already pre-defined variables which are called __magic variables__ .
 
-> This is a blockquote example.
+An example of dictionary variable is below 
 
-<hr>
+employee:
+	name:bob
+	id:42
 
-##### Inline HTML
+To reference the value there are two types of notations that can be used 
+	employee[‘name’]
+	employee.name
 
-You can also use raw HTML in your Markdown, and it'll mostly work pretty well.
+```
+[root@node1 playbooks]# cat var_demo.yml
+---
+- hosts: all
+  vars:
+    inv_file: /home/piyush/inv.txt
+  tasks:
+  - name: Create  a file
+    file:
+      path: "{{ inv_file }}"
+      state: touch
+  - name: generate inventory
+    lineinfile:
+      path: "{{ inv_file }}"
+      line: "{{ groups['allservers']|join(': ')}}"
 
-<dl>
-  <dt>Definition list</dt>
-  <dd>Is something people use sometimes.</dd>
+[root@node1 playbooks]# cd /home/piyush/
+[root@node1 piyush]# pwd
+/home/piyush
+[root@node1 piyush]# cat inv.txt
+node1: node2: node3
 
-  <dt>Markdown in HTML</dt>
-  <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
-</dl>
+```
+
+### Variable Files
+
+* 	We can create a variable file and pass it in the command line wih -e flag
 
 
-<hr>
+```
+ansible-playbook -i ../ansible-inventory.ini users.list.yml -e "@users.list"
 
-##### Tables
 
-Colons can be used to align columns.
+[root@node1 playbooks]# cat  users.list
+developers:
+ - john
+ - sarah
+ - tom
+ - bob
+admins:
+ - Kevin
+ - Mary
+testers:
+ - Jeff
+ - Lee
+[root@node1 playbooks]# cat  users.list.yml
+---
+- hosts: appservers
+  vars:
+    userfile: /root/ansible/playbooks/newusers.list
+  tasks:
+    - name: Create file
+      file:
+        state: touch
+        path: "{{ userfile}}"
+    - name: List Users
+      lineinfile:
+         path: "{{ userfile}}"
+         line:  "{{ item}}"
+      with_items:
+        -  "{{ developers}}"
+        -  "{{ admins}}"
+        -  "{{ testers}}"
 
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+[root@node1 playbooks]#  ansible-playbook -i ../ansible-inventory.ini users.list.yml -e "@users.list"
 
-There must be at least 3 dashes separating each header cell.
-The outer pipes (|) are optional, and you don't need to make the 
-raw Markdown line up prettily. You can also use inline Markdown.
+PLAY [appservers] *******************************************************************************************************************************************
 
-Markdown | Less | Pretty
---- | --- | ---
-*Still* | `renders` | **nicely**
-1 | 2 | 3
+TASK [Gathering Facts] **************************************************************************************************************************************
+ok: [node1]
 
-<hr>
+TASK [Create file] ******************************************************************************************************************************************
+changed: [node1]
 
-##### Image
+TASK [List Users] *******************************************************************************************************************************************
+changed: [node1] => (item=john)
+changed: [node1] => (item=sarah)
+changed: [node1] => (item=tom)
+changed: [node1] => (item=bob)
+changed: [node1] => (item=Kevin)
+changed: [node1] => (item=Mary)
+changed: [node1] => (item=Jeff)
+changed: [node1] => (item=Lee)
 
-![image](../../images/post/post-1.jpg)
+PLAY RECAP **************************************************************************************************************************************************
+node1                      : ok=3    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 
-<hr>
+[root@node1 playbooks]# cat newusers.list
+john
+sarah
+tom
+bob
+Kevin
+Mary
+Jeff
+Lee
 
-##### Youtube video
+```
 
-{{< youtube C0DPdy98e4c >}}
+## Ansible Facts 
+
+![image](../../images/post/ansible-12.png)
+
+![image](../../images/post/ansible-13.png)
+
+
+* 	We can add filters while collecting facts as shown below 
+
+```
+[root@node1 playbooks]# ansible localhost  -m setup -a "filter=*dist*"
+localhost | SUCCESS => {
+    "ansible_facts": {
+        "ansible_distribution": "CentOS",
+        "ansible_distribution_file_parsed": true,
+        "ansible_distribution_file_path": "/etc/redhat-release",
+        "ansible_distribution_file_variety": "RedHat",
+        "ansible_distribution_major_version": "7",
+        "ansible_distribution_release": "Core",
+        "ansible_distribution_version": "7.6"
+    },
+    "changed": false
+}
+
+```
+
+*	To suit our requirements, we can create custom facts as well. Below is an example for the same.
+
+Custom facts are also called __Local__ facts 
+
+We can create our own custom facts as well. For this login to the node for which you want to create custom facts and create a file on the below path. We will login to node3
+
+```
+mkdir -p /etc/ansible/facts.d/
+vi data.fact
+[location]
+type=physical
+datacenter: Bengaluru
+
+Now login to the controller node i.e. node1
+
+[root@node1 ansible]# ansible -i ansible-inventory.ini  dbservers -m setup -a "filter=ansible_local"
+node3 | SUCCESS => {
+    "ansible_facts": {
+        "ansible_local": {
+            "data": {
+                "location": {
+                    "datacenter": "Bengaluru",
+                    "type": "physical"
+                }
+            }
+        },
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false
+}
+
+```
+
+## Ansible Roles
+
+![image](../../images/post/ansible-14.png)
+
+Roles are ways of automatically loading certain vars_files, tasks, and handlers based on a known file structure. Grouping content by roles also allows easy sharing of roles with other users.
+
+Roles expect files to be in certain directory names. Roles must include at least one of these directories, however it is perfectly fine to exclude any which are not being used. When in use, each directory must contain a main.yml file, which contains the relevant content:
+
+*	tasks - contains the main list of tasks to be executed by the role.
+*	handlers - contains handlers, which may be used by this role or even anywhere outside this role.
+*	defaults - default variables for the role (see Using Variables for more information).
+*	vars - other variables for the role (see Using Variables for more information).
+*	files - contains files which can be deployed via this role.
+*	templates - contains templates which can be deployed via this role.
+*	meta - defines some meta data for this role. 
+*	Default path for roles is /etc/ansible/roles
+
+
+## Download Roles From Ansible Galaxy
+
+Creating roles on our own can sometimes be cumbersome.Ansible is an opensource project and techies from all around the globe write roles and publish it over ansible galaxy so that others can use it. 
+
+Ansible galaxy is repository of community created ansible roles that can be used by others who want to utilize them.
+To know more , please visit : :  https://galaxy.ansible.com/
+
+![image](../../images/post/ansible-15.png)
+
+
+```
+[root@node1 galaxy]# pwd
+/root/ansible/galaxy
+[root@node1 galaxy]# ansible-galaxy init mysql
+- mysql was created successfully
+[root@node1 galaxy]# cd mysql/
+[root@node1 mysql]# ll
+total 4
+drwxr-xr-x 2 root root   22 Aug 26 18:32 defaults
+drwxr-xr-x 2 root root    6 Aug 26 18:32 files
+drwxr-xr-x 2 root root   22 Aug 26 18:32 handlers
+drwxr-xr-x 2 root root   22 Aug 26 18:32 meta
+-rw-r--r-- 1 root root 1328 Aug 26 18:32 README.md
+drwxr-xr-x 2 root root   22 Aug 26 18:32 tasks
+drwxr-xr-x 2 root root    6 Aug 26 18:32 templates
+drwxr-xr-x 2 root root   39 Aug 26 18:32 tests
+drwxr-xr-x 2 root root   22 Aug 26 18:32 vars
+[root@node1 mysql]
+
+ansible-galaxy search elastic | more
+
+![image](../../images/post/ansible-16.png)
+
+Now go to the path where playbooks are located( the ones that we have created) and create  a small playbook to call the role that we have installed .
+
+To set the default path where galaxy will install the role , comment out relevant line in /etc/ansible/ansible.cfg
+
+```
+[root@node1 playbooks]# ansible-galaxy install elastic.elasticsearch
+[root@node1 playbooks]# pwd
+/root/ansible/playbooks
+[root@node1 playbooks]# cat install_elastic_role.yml
+- name: Call Elasticsearch role
+  hosts: all
+  roles:
+    - role: elastic.elasticsearch
+
+```
+To remove the role 
+
+ansible-galaxy remove  elastic.elasticsearch
+
+
+That is it for the current tutorial.We will learn more about Ansible in the next part of this series.
+
+
+
+
+
+
