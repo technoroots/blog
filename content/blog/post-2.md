@@ -1,5 +1,5 @@
 ---
-title: "Getting Started With Ansible"
+title: "Getting Started With Ansible(Part-1)"
 date: 2020-06-07
 draft: false
 
@@ -21,6 +21,8 @@ type: "featured"
 ---
 
 ## Introduction To Ansible 
+
+Ansible is one of the important orchestration tool that forms an integral part of Devops lifecycle.As its a vast subject , we are going to cover it in four parts. Lets begin with the first part.
 
 Ansible is an open-source software provisioning, configuration management, and application-deployment tool. It runs on many Unix-like systems, and can configure both Unix-like systems as well as Microsoft Windows. It includes its own declarative language to describe system configuration.
 
@@ -274,6 +276,7 @@ ansible -i ansible-inventory.ini appservers -b -m user -a "name=sam"
 ansible -i ansible-inventory.ini appservers -b -m user -a "name=sam append=yes groups=wheel" # user sam added to additional group called wheel
 ```
 
+We hope that you are able to set up your basics right from here.Lets move to second part and learn about some more ansible stuff.
 
 
 
