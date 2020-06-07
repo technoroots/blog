@@ -1,166 +1,81 @@
 ---
-title: "How To Use Checklists To Improve Your UX"
-date: 2019-10-29T10:07:47+06:00
+title: "Getting Started With Ansible(Part-4)"
+date: 2020-06-07
 draft: false
 
 # post thumb
-image: "images/post/post-2.jpg"
+image: "images/featured-post/ansible-1.jpg"
 
 # meta description
 description: "this is meta description"
 
 # taxonomies
 categories: 
-  - "Go Language"
+  - "information Technology"
+  - "Automation"
+  - "Orchestration Tool"
 tags:
-  - "Photos"
-  - "HTML"
-  - "Python"
-  - "New"
+  - "Ansible"
+  - "Infra Orchestration"
+  - "Ansible Roles"
+  - "Ansible Galaxy"
+  - "Jinja Templates"
 
 # post type
-type: "post"
+type: "featured"
 ---
 
-# Heading 1
-## Heading 2
-### Heading 3
-#### Heading 4
-##### Heading 5
-###### Heading 6
+Let us move forward and read about Parallelism in Ansible and Ansible Vault
 
-<hr>
+## Parallelism In Ansible 
 
-##### Emphasis
+*	Ansible supports parallelism that is it works on number of hosts at once in parallel rather than working one at a time.
+*	If the ansible control node is a server with good configuration, we can increase the number of parallel processes and this number can be managed by ansible.cfg file.
+*	By default, each process can be forked 5 times
+*	We can specify a different value with -f flag.
 
-Emphasis, aka italics, with *asterisks* or _underscores_.
+![image](../../images/post/ansible-17.png)
 
-Strong emphasis, aka bold, with **asterisks** or __underscores__.
-
-Combined emphasis with **asterisks and _underscores_**.
-
-Strikethrough uses two tildes. ~~Scratch this.~~
-
-<hr>
-
-##### Link
-[I'm an inline-style link](https://www.google.com)
-
-[I'm an inline-style link with title](https://www.google.com "Google's Homepage")
-
-[I'm a reference-style link][Arbitrary case-insensitive reference text]
-
-[I'm a relative reference to a repository file](../blob/master/LICENSE)
-
-[You can use numbers for reference-style link definitions][1]
-
-Or leave it empty and use the [link text itself].
-
-URLs and URLs in angle brackets will automatically get turned into links. 
-http://www.example.com or <http://www.example.com> and sometimes 
-example.com (but not on Github, for example).
-
-Some text to show that the reference links can follow later.
-
-[arbitrary case-insensitive reference text]: https://www.mozilla.org
-[1]: http://slashdot.org
-[link text itself]: http://www.reddit.com
-
-<hr>
-
-##### Paragraph
-
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam nihil enim maxime corporis cumque totam aliquid nam sint inventore optio modi neque laborum officiis necessitatibus, facilis placeat pariatur! Voluptatem, sed harum pariatur adipisci voluptates voluptatum cumque, porro sint minima similique magni perferendis fuga! Optio vel ipsum excepturi tempore reiciendis id quidem? Vel in, doloribus debitis nesciunt fugit sequi magnam accusantium modi neque quis, vitae velit, pariatur harum autem a! Velit impedit atque maiores animi possimus asperiores natus repellendus excepturi sint architecto eligendi non, omnis nihil. Facilis, doloremque illum. Fugit optio laborum minus debitis natus illo perspiciatis corporis voluptatum rerum laboriosam.
-
-<hr>
-
-##### List
-
-1. List item
-2. List item
-3. List item
-4. List item
-5. List item
+*	Ansible will only fork to the maximum equal to the number of hosts that are present in the inventory, no matter how large fork value we specify.
+*	We can mention the fork value in playbooks by the serial key word in the hosts section
+serial: 10
+max_fail_perceentage: 30  # In the parallel execution if 30% of the execution fails, then whole batch is considered fail.
 
 
-##### Unordered List
 
-* List item
-* List item
-* List item
-* List item
-* List item
-<hr>
+## Ansible Vault : Dealing With Confidential Data 
 
-##### Code and Syntax Highlighting
+This is a ansible way to secure files containing confidential data.In case we have some confidential information in a file , we can encrypt it using ansible vault and then decrypt it.
 
-Inline `code` has `back-ticks around` it.
-
-```javascript
-var s = "JavaScript syntax highlighting";
-alert(s);
 ```
- 
-```python
-s = "Python syntax highlighting"
-print s
-```
- 
-```
-No language indicated, so no syntax highlighting. 
-But let's throw in a <b>tag</b>.
+[root@node1 playbooks]# echo "This is a secret file" >> secret.txt
+[root@node1 playbooks]# ansible-vault encrypt secret.txt
+New Vault password:
+Confirm New Vault password:
+Encryption successful
+[root@node1 playbooks]# cat secret.txt
+$ANSIBLE_VAULT;1.1;AES256
+35386236356661303433353862333161376436373935323563646634633266616537393335656134
+3930653763313963653233393231613834346433383737310a376231663536396131313531386465
+32613166626630363161376664633036376432623231393535383537316237383564353962366266
+6633393839393761330a323962313461623336326263663165313033333130613063316634346263
+63303335653830333861383135353639393537653933333861616563303863353132
+[root@node1 playbooks]# ansible-vault edit secret.txt
+Vault password:
+[root@node1 playbooks]# ansible-vault view  secret.txt
+Vault password:
+This is a secret file
+[root@node1 playbooks]# ansible-vault decrypt   secret.txt
+Vault password:
+Decryption successful
+
 ```
 
-<hr>
+We hope this series of tutorials will help you do your daily opearational tasks at work.
+For more information, refer the official Ansible documentation.
 
-##### Blockquote
-
-> This is a blockquote example.
-
-<hr>
-
-##### Inline HTML
-
-You can also use raw HTML in your Markdown, and it'll mostly work pretty well.
-
-<dl>
-  <dt>Definition list</dt>
-  <dd>Is something people use sometimes.</dd>
-
-  <dt>Markdown in HTML</dt>
-  <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
-</dl>
+< docs.ansible.com >
 
 
-<hr>
 
-##### Tables
 
-Colons can be used to align columns.
-
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
-
-There must be at least 3 dashes separating each header cell.
-The outer pipes (|) are optional, and you don't need to make the 
-raw Markdown line up prettily. You can also use inline Markdown.
-
-Markdown | Less | Pretty
---- | --- | ---
-*Still* | `renders` | **nicely**
-1 | 2 | 3
-
-<hr>
-
-##### Image
-
-![image](../../images/post/post-1.jpg)
-
-<hr>
-
-##### Youtube video
-
-{{< youtube C0DPdy98e4c >}}
